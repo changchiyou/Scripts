@@ -1,0 +1,2 @@
+# Local secrets/config — copy env.sh.example to env.sh and fill in.
+env.sh
