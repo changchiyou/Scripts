@@ -1,5 +1,5 @@
 #!/bin/bash
-# Power off the server while it runs Ubuntu (via the WHS-UBUNTU ssh alias).
+# Power off the server while it runs Ubuntu (via the GHS ssh alias).
 # Needs a NOPASSWD sudoers rule for shutdown on the Ubuntu install:
 #   echo "chris ALL=(ALL) NOPASSWD: /usr/sbin/shutdown" | sudo tee /etc/sudoers.d/chris-shutdown
 set -euo pipefail

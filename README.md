@@ -48,7 +48,7 @@ and is gitignored on purpose — never commit it.
   reinstalls and localized Windows editions.
 - Both OS installs run a cloudflared connector for the same tunnel, so the
   host is reachable whichever one booted. `~/.ssh/config` needs one alias per
-  OS (`WHS` = Windows user, `WHS-UBUNTU` = Ubuntu user), each with its own
+  OS (`WHS` = Windows, `GHS` = Ubuntu GPU host), each with its own
   `HostKeyAlias` — the same hostname presents different host keys per OS.
 - `ubuntu/sleep.sh` additionally needs a NOPASSWD sudoers rule for shutdown
   (see header comment in the script).
