@@ -46,7 +46,11 @@ and is gitignored on purpose — never commit it.
   sequence through `bcdedit`. The Ubuntu entry is resolved by its EFI path
   (`\EFI\ubuntu\shimx64.efi`), so it survives GUID changes from GRUB
   reinstalls and localized Windows editions.
-- `ubuntu/sleep.sh` requires sshd (and the SSH tunnel client) installed on
-  the Ubuntu install, otherwise the host is unreachable once Windows is off.
+- Both OS installs run a cloudflared connector for the same tunnel, so the
+  host is reachable whichever one booted. `~/.ssh/config` needs one alias per
+  OS (`WHS` = Windows user, `WHS-UBUNTU` = Ubuntu user), each with its own
+  `HostKeyAlias` — the same hostname presents different host keys per OS.
+- `ubuntu/sleep.sh` additionally needs a NOPASSWD sudoers rule for shutdown
+  (see header comment in the script).
 - Windows SSH output is CRLF and locale-encoded; `lib/common.sh`'s `win()`
   strips CR so parsing stays sane.

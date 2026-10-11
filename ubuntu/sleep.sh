@@ -1,11 +1,11 @@
 #!/bin/bash
-# Power off the server while it runs Ubuntu (via Linux sshd).
-# Requires sshd + tunnel client installed on the Ubuntu install,
-# otherwise the SSH tunnel is dead once Windows is off.
+# Power off the server while it runs Ubuntu (via the WHS-UBUNTU ssh alias).
+# Needs a NOPASSWD sudoers rule for shutdown on the Ubuntu install:
+#   echo "chris ALL=(ALL) NOPASSWD: /usr/sbin/shutdown" | sudo tee /etc/sudoers.d/chris-shutdown
 set -euo pipefail
 source "$(dirname "$(readlink -f "$0")")/../lib/common.sh"
 _load_config
 
-echo "Shutting down $REMOTE_HOST (Ubuntu)..."
-ssh "$REMOTE_HOST" "sudo shutdown -h now"
+echo "Shutting down $UBUNTU_HOST (Ubuntu)..."
+ssh "$UBUNTU_HOST" "sudo shutdown -h now"
 echo "Power off command sent."

@@ -14,6 +14,8 @@ _load_config() {
     source "$root/env.sh"
     : "${REMOTE_HOST:?REMOTE_HOST not set in env.sh}"
     : "${WOL_MAC:?WOL_MAC not set in env.sh}"
+    # Same machine, Ubuntu install; falls back to the Windows alias.
+    : "${UBUNTU_HOST:=$REMOTE_HOST}"
 }
 
 # Remote is Windows by default: output is CRLF (+ non-UTF8 locale bytes).
