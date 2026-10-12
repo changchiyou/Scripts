@@ -14,6 +14,7 @@ since="${DAYS} days ago"
 echo "=== Successful logins (last, since wtmp start) ==="
 # LC_ALL=C: stable (English) timestamps so the sed below matches.
 export LC_ALL=C
+last -F -s "$(date -d "$since" '+%Y-%m-%d %H:%M:%S')" 2>/dev/null | grep -vE '^(wtmp|reboot|$)'
 
 echo
 echo "=== Accepted authentications (journal, last ${DAYS}) ==="
